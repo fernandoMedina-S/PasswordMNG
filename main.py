@@ -1,5 +1,11 @@
+#Libreria para conectar MySQL
 import pymysql
+from os import system
+import sys
+from pynput import keyboard as kb
 
+
+#Cadena de conexion
 conexion = pymysql.connect(
         host="localhost",
         user="root",
@@ -9,10 +15,30 @@ conexion = pymysql.connect(
 
 cursor = conexion.cursor()
 
-consulta = "select * from web;"
 
-cursor.execute(consulta)
 
-datos = cursor.fetchone()
+def agregar():
+    print("¿Es una página nueva?")
+    opcion = input("S/n")
+    if opcion.lower() == "s":
+        print("Ingresa la direccion de la pagina")
+        sitio = input("-> ")
+    else:
+        pass #Desplegar lista de sitios
+    menu()
+    
 
-print(datos[1])
+def menu():
+    opcion = 1
+    system("clear")
+    print("Selecciona una opcion")
+    print("1.- Agregar contraseña")
+    print("2.- Consultar contraseña")
+    print("3.- Configuraciones")
+    print("4.- Salir")
+    
+    
+
+
+menu()
+
